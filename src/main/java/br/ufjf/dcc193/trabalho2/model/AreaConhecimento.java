@@ -16,4 +16,4 @@ public class AreaConhecimento {
 
     @OneToMany
     private List<Avaliador> avaliadores;
-} 
+}

@@ -12,7 +12,7 @@ public class Avaliador {
     private String email;
     private int codigo;
 
-    @ManyToMany
+    @OneToMany
     private List<AreaConhecimento> areaConhecimento;
 
     @OneToMany
