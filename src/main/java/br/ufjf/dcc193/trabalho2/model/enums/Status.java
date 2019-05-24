@@ -1,4 +1,4 @@
-package br.ufjf.dcc193.trabalho2.model;
+package br.ufjf.dcc193.trabalho2.model.enums;
 
 public enum Status {
     AFAZER(0,"A fazer"),

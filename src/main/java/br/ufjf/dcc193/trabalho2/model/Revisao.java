@@ -1,5 +1,7 @@
 package br.ufjf.dcc193.trabalho2.model;
 
+import br.ufjf.dcc193.trabalho2.model.enums.Status;
+
 import javax.persistence.*;
 
 @Entity

@@ -15,7 +15,7 @@ public class Trabalho {
     @OneToMany
     private List<Revisao> revisoes;
 
-    @OneToMany
-    private List<AreaConhecimento> areaConhecimento;
+    @ManyToOne
+    private AreaConhecimento areaConhecimento;
     
 } 
