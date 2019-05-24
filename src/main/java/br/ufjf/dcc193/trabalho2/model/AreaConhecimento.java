@@ -9,7 +9,7 @@ public class AreaConhecimento {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String area;
-    private String desc;
+    private String descricao;
 
     @OneToMany
     private List<Trabalho> trabalhos;

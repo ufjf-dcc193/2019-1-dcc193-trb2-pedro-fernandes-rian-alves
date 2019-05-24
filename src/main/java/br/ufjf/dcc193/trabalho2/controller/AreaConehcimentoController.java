@@ -33,8 +33,8 @@ public class AreaConehcimentoController {
     {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("area");
-        Optional<AreaConhecimento> areasConhecimento = rep.findById(id);
-        mv.addObject("areasConhecimento",areasConhecimento);
+        Optional<AreaConhecimento> areaConhecimento = rep.findById(id);
+        mv.addObject("areaConhecimento",areaConhecimento);
         return mv;
     }
 

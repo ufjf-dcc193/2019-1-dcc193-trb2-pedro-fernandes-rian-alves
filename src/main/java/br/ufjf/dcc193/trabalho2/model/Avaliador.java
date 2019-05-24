@@ -10,7 +10,7 @@ public class Avaliador {
     private Long id;
     private String nome;
     private String email;
-    private int codigo;
+    private Integer codigo;
 
     @OneToMany
     private List<AreaConhecimento> areaConhecimento;
