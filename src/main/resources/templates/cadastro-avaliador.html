@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Cadastro Avaliador</title>
+        
+</head>
+<body>
+    <form th:action="@{criar.html}" method="post" th:object="${avaliador}">
+        <label>Nome: <input type="text" th:field="*{nome}"></label>
+        <strong th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></strong>
+        <label>E-mail: <input type="email" th:field="*{email}"></label>
+        <strong th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></strong>
+        <label>Código de Acesso: <input type="codigo" th:field="*{codigo}"></label>
+        <strong th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}"></strong>   
+        <input type="submit" />
+        <input type="reset" />
+    </form>
+</body>
+</html>
