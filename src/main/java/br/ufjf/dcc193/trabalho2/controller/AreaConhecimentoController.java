@@ -4,6 +4,7 @@ import br.ufjf.dcc193.trabalho2.model.AreaConhecimento;
 import br.ufjf.dcc193.trabalho2.repository.AreaConhecimentoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,8 +14,10 @@ import org.springframework.web.servlet.view.RedirectView;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 @Controller
-public class AreaConehcimentoController {
+public class AreaConhecimentoController {
 
     @Autowired
     private AreaConhecimentoRepository rep;
@@ -38,12 +41,30 @@ public class AreaConehcimentoController {
         return mv;
     }
 
-    @GetMapping("areas-cadastrar.html")
-    public ModelAndView areaCadastrar()
+   
+    @GetMapping( "/areas-cadastrar.html")
+    public ModelAndView areaConhecimento()
     {
+        AreaConhecimento area = new AreaConhecimento();
         ModelAndView mv = new ModelAndView();
         mv.setViewName("area-cadastrar");
+        mv.addObject("area", area);
         return mv;
+    }
+
+    @PostMapping(value = "/criarArea.html")
+    public ModelAndView areaConhecimentoSalvar(@Valid AreaConhecimento area, BindingResult binding){
+    
+        ModelAndView mv = new ModelAndView();
+        if (binding.hasErrors()) {
+            mv.setViewName("area-cadastrar");
+            mv.addObject("area", area);
+            return mv;
+        }
+        rep.save(area);
+        mv.setViewName("redirect:principal.html");
+        return mv;
+       
     }
 
     @PostMapping("areas-cadastrar.html")

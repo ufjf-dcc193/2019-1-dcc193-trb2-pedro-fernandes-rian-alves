@@ -7,7 +7,7 @@
         
 </head>
 <body>
-    <form th:action="@{criar.html}" method="post" th:object="${area}">
+    <form th:action="@{criarArea.html}" method="post" th:object="${area}">
         <label>Área: <input type="text" th:field="*{area}"></label>
         <strong th:if="${#fields.hasErrors('area')}" th:errors="*{area}"></strong>
         <label>Descrição: <input type="descricao" th:field="*{descricao}"></label>
