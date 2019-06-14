@@ -56,7 +56,7 @@ public class AvaliadorController {
             return mv;
         }
         rep.save(avaliador);
-        mv.setViewName("redirect:loin.html");
+        mv.setViewName("redirect:login.html");
        return mv;
        
     }

@@ -28,4 +28,16 @@ public class AreaConhecimento {
     public String getDescricao() {
         return descricao;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
 }
