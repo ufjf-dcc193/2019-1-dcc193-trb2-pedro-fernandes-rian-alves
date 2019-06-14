@@ -16,4 +16,16 @@ public class AreaConhecimento {
 
     @OneToMany
     private List<Avaliador> avaliadores;
+
+    public Long getId() {
+        return id;
+    }
+
+     public String getArea() {
+        return area;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
 }

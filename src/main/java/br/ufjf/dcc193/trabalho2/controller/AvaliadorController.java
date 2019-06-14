@@ -36,7 +36,7 @@ public class AvaliadorController {
         return mv;
     }
 
-    @RequestMapping(value = "/novo.html", method = RequestMethod.GET)
+    @GetMapping( "/novo.html")
     public ModelAndView avaliadorCadastrar()
     {
         Avaliador avaliador = new Avaliador();

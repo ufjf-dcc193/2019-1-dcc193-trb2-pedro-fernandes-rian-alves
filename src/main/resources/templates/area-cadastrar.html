@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Cadastro- Área de Conhecimento</title>
+        
+</head>
+<body>
+    <form th:action="@{criar.html}" method="post" th:object="${avaliador}">
+        <label>Área: <input type="text" th:field="*{area}"></label>
+        <strong th:if="${#fields.hasErrors('area')}" th:errors="*{area}"></strong>
+        <label>Descrição: <input type="descricao" th:field="*{descricao}"></label>
+        <strong th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}"></strong>   
+        <input type="submit" />
+        <input type="reset" />
+    </form>
+</body>
+</html>
