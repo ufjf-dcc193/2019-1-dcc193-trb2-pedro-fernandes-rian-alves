@@ -49,6 +49,7 @@ public class AreaConhecimentoController {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("area-cadastrar");
         mv.addObject("area", area);
+        
         return mv;
     }
 

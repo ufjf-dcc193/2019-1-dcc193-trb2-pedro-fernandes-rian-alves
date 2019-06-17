@@ -14,6 +14,13 @@
         <strong th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></strong>
         <label>Código de Acesso: <input type="codigo" th:field="*{codigo}"></label>
         <strong th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}"></strong>   
+        <label>Áreas de Conhecimento: 
+            <select name="areaConhecimento">
+                <option th:each="areaConhecimento : ${areas}"
+                        th:value="${areaConhecimento.id}"
+                        th:text="${areaConhecimento.area}" >
+            </select>
+        </select></label>
         <input type="submit" />
         <input type="reset" />
     </form>
