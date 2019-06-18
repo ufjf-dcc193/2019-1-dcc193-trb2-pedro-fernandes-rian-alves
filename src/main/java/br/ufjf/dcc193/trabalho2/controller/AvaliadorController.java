@@ -34,7 +34,7 @@ public class AvaliadorController {
         return mv;
     }
 
-    @GetMapping("avaliadores.html")
+    @GetMapping("avaliadores-lista.html")
     public ModelAndView avaliadores(){
         ModelAndView mv = new ModelAndView();
         mv.addObject("avaliadores",rep.findAll());

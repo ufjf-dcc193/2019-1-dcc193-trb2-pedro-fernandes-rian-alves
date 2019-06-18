@@ -15,7 +15,7 @@
         <strong th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></strong><br/>
         <label>E-mail: <input type="email" th:field="*{email}"></label><br/>
         <strong th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></strong><br/>
-        <label>Código de Acesso: <input type="codigo" th:field="*{codigo}"></label><br/>
+        <label>Código de Acesso: <input type="text" th:field="*{codigo}"></label><br/>
         <strong th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}"></strong> <br/> 
        
         <label>Informe a Área de Conhecimento e adicione:</label><br/>
