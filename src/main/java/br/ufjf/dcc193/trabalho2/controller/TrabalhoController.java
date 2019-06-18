@@ -22,40 +22,36 @@ public class TrabalhoController {
     @Autowired
     private TrabalhoRepository rep;
 
-    @GetMapping("trabalhos.html")
+    @GetMapping("/trabalhos/listar.html")
     public ModelAndView trabalhos(){
         ModelAndView mv = new ModelAndView();
         List<Trabalho> trabalhos = rep.findAll();
+        mv.setViewName("trabalhos-listar");
         mv.addObject("trabalhos",trabalhos);
         return mv;
     }
 
-    @GetMapping("trabalhos-cadastrar.html")
+    @GetMapping("trabalhos/cadastrar.html")
     public ModelAndView trabalhoCadasatrar() {
         Trabalho trabalho = new Trabalho();
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("trabalho-form");
+        mv.setViewName("trabalhos-cadastrar");
         mv.addObject("trabalho", trabalho);
         return mv;
     }
 
-    @PostMapping("trabalhos-cadastrar.html")
-    public ModelAndView trabalhoCadastrarPost(@Valid Trabalho trabalho, BindingResult binding){
+    @PostMapping("trabalhos/cadastrar.html")
+    public ModelAndView trabalhoCadastrarPost(Trabalho trabalho){
         ModelAndView mv = new ModelAndView();
 
-        if (binding.hasErrors()) {
-            mv.setViewName("trabalho-cadastrar");
-            mv.addObject("trabalho", trabalho);
-            return mv;
-        }
         rep.save(trabalho);
         mv.addObject("trabalho", trabalho);
-        mv.setViewName("redirect:trabalhos");
+        mv.setViewName("redirect:/trabalhos/listar.html");
         return mv;
     }
 
 
-    @GetMapping("trabalhos-editar/{id}.html")
+    @GetMapping("/trabalhos/editar/{id}.html")
     public ModelAndView trabalhoEditar(@PathVariable Long id){
         ModelAndView mv = new ModelAndView();
         Optional<Trabalho> trabalho = rep.findById(id);
@@ -63,13 +59,13 @@ public class TrabalhoController {
         return mv;
     }
 
-    @PostMapping("trabalhos-editar.html")
+    @PostMapping("/trabalhos/editar.html")
     public RedirectView trabalhoEditarPost (Trabalho trabalho){
         rep.save(trabalho);
         return new RedirectView("/trabalhos.html?alteradp=true");
     }
 
-    @DeleteMapping("/trabalhos-deletar/{id}.html")
+    @DeleteMapping("/trabalhos/deletar/{id}.html")
     public RedirectView trabalhoDeletar(@PathVariable Long id){
         rep.deleteById(id);
         return new RedirectView("/trabalhos.html?deletado=true");

@@ -6,7 +6,7 @@
     <title>Cadastro - Trabalho</title>
 </head>
 <body>
-<form th:action="@{trabalhos-cadastrar.html}" method="post" th:object="${trabalho}" >
+<form th:action="@{/trabalhos/cadastrar.html}" method="post" th:object="${trabalho}" >
     <label>Título: <input type="text" th:field="*{titulo}"></label>
     <strong th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}"></strong>
     <label>Descrição: <textarea th:field="*{descricao}"></textarea></label>
