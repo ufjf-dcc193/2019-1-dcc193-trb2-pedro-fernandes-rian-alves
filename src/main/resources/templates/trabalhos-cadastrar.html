@@ -3,10 +3,16 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Cadastro Trabalho</title>
+    <title>Cadastro - Trabalho</title>
 </head>
 <body>
-<form th:action="@{criar.html}" method="post" th:object="${trabalho}">
+<form th:action="@{trabalhos-cadastrar.html}" method="post" th:object="${trabalho}" >
+    <label>Título: <input type="text" th:field="*{titulo}"></label>
+    <strong th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}"></strong>
+    <label>Descrição: <textarea th:field="*{descricao}"></textarea></label>
+    <strong th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}"></strong>
+    <label>Url: <input type="text" th:field="*{url}"></label>
+    <strong th:if="${#fields.hasErrors('url')}" th:errors="*{url}"></strong>
     <input type="submit"/>
     <input type="reset"/>
 </form>
