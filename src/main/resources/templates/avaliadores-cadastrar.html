@@ -3,26 +3,76 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <link href="webjars/bootstrap/4.3.1/css/bootstrap.min.css"rel="stylesheet">
+    <script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <title>Cadastro Avaliador</title>
         
 </head>
 <body>
     <form th:action="@{criar.html}" method="post" th:object="${avaliador}">
-        <label>Nome: <input type="text" th:field="*{nome}"></label>
-        <strong th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></strong>
-        <label>E-mail: <input type="email" th:field="*{email}"></label>
-        <strong th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></strong>
-        <label>Código de Acesso: <input type="codigo" th:field="*{codigo}"></label>
-        <strong th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}"></strong>   
-        <label>Áreas de Conhecimento: 
-            <select name="areaConhecimento">
-                <option th:each="areaConhecimento : ${areas}"
-                        th:value="${areaConhecimento.id}"
-                        th:text="${areaConhecimento.area}" >
-            </select>
-        </select></label>
+        <label>Nome: <input type="text" th:field="*{nome}"></label><br/>
+        <strong th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></strong><br/>
+        <label>E-mail: <input type="email" th:field="*{email}"></label><br/>
+        <strong th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></strong><br/>
+        <label>Código de Acesso: <input type="text" th:field="*{codigo}"></label><br/>
+        <strong th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}"></strong> <br/> 
+       
+        <label>Informe a Área de Conhecimento e adicione:</label><br/>
+        <div class="input-group">
+            <select class="form-control" id="areaConhecimento">
+                 <option th:each="areaConhecimento : ${areas}"
+                         th:value="${areaConhecimento.id}"
+                         th:text="${areaConhecimento.area}" >        
+            </select> <span class="input-group-btn">
+                <button class="btn btn-primary" type="button" id="add" onclick="MoveListBoxItem('areaConhecimento','itemArea')">Adicionar</button>
+                <button class="btn btn-warning" type="button" id="remove" onclick="MoveListBoxItem('itemArea','areaConhecimento')">Remover</button>
+            </span>
+        </div><br/>
+        <label>Áreas de Conhecimento</label><br/>
+        <select class="form-control" multiple="multiple" name="itemArea" id="itemArea">
+        </select>
+        <br/>
+        
         <input type="submit" />
         <input type="reset" />
     </form>
+
+    <br/>
+<br/>
+<script type="text/javascript">
+    $("#add").click(function () {
+        $('#itemArea').append($('<option>', {
+            value: $('#link').val(),
+            text: $('#link').val()
+        }));
+        $('#link').val("");
+        $('#link').focus();
+    });
+    $("#remove").click(function () {
+        $('#itemArea option:selected').remove();
+        $('#link').val("");
+        $('#link').focus();
+    });
+    function MoveListBoxItem(leftListBoxID, rightListBoxID, isMoveAll) {
+        if (isMoveAll === true) {
+            $('#' + leftListBoxID + ' option').remove().appendTo('#' + rightListBoxID).removeAttr('selected');
+        } else {
+            $('#' + leftListBoxID + ' option:selected').remove().appendTo('#' + rightListBoxID).removeAttr('selected');
+        }
+    }
+    $("#enviar").click(function () {
+        $("#itemArea option").each(function () {
+            $(this).prop('selected', true);
+        }
+        );
+        $("#itemArea").prop('required', true);
+        $("#tags option").each(function () {
+            $(this).prop('selected', true);
+        }
+        );
+        $("#tags").prop('required', true);
+    });
+</script>
 </body>
 </html>

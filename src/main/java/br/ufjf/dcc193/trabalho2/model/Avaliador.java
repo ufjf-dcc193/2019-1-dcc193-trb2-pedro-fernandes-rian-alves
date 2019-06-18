@@ -4,36 +4,33 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Avaliador {
+public class Avaliador  {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    private String nome;
     private String email;
-    private Integer codigo;
+    private String nome;
+    
+    private String codigo;
     @OneToMany
     private List<AreaConhecimento> areaConhecimento;
 
     @OneToMany
     private List<Revisao> revisoes;
-   
-    public Long getId() {
-        return id;
-    }
-    
+
+     
     public String getNome() {
         return nome;
     }
 
-  
     public String getEmail() {
         return email;
     }
-    
-    public Integer getCodigo() {
+
+    public String getCodigo() {
         return codigo;
     }
-  
+
     public List<AreaConhecimento> getAreaConhecimento() {
         return areaConhecimento;
     }
@@ -42,10 +39,6 @@ public class Avaliador {
         return revisoes;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-    
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -54,14 +47,18 @@ public class Avaliador {
         this.email = email;
     }
 
-    public void setCodigo(Integer codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 
     public void setAreaConhecimento(List<AreaConhecimento> areaConhecimento) {
         this.areaConhecimento = areaConhecimento;
     }
+
     public void setRevisoes(List<Revisao> revisoes) {
         this.revisoes = revisoes;
     }
+
+    
+
 } 

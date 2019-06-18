@@ -1,9 +1,11 @@
 package br.ufjf.dcc193.trabalho2.repository;
 
-import br.ufjf.dcc193.trabalho2.model.Avaliador;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import br.ufjf.dcc193.trabalho2.model.Avaliador;
+
 @Repository
-public interface AvaliadorRepository extends JpaRepository<Avaliador,Long> {
+public interface AvaliadorRepository extends CrudRepository<Avaliador,Long> {
+    
 }

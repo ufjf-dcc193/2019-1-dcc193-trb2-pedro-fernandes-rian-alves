@@ -1,5 +1,7 @@
 package br.ufjf.dcc193.trabalho2.controller;
 
+
+
 import br.ufjf.dcc193.trabalho2.model.Avaliador;
 import br.ufjf.dcc193.trabalho2.repository.AreaConhecimentoRepository;
 import br.ufjf.dcc193.trabalho2.repository.AvaliadorRepository;
@@ -12,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -23,7 +26,15 @@ public class AvaliadorController {
     @Autowired
     private AreaConhecimentoRepository reparea;
 
-    @GetMapping("avaliadores.html")
+    @RequestMapping("login.html")
+    public ModelAndView inicial ()
+    {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("login");
+        return mv;
+    }
+
+    @GetMapping("avaliadores-lista.html")
     public ModelAndView avaliadores(){
         ModelAndView mv = new ModelAndView();
         mv.addObject("avaliadores",rep.findAll());
@@ -33,7 +44,7 @@ public class AvaliadorController {
     @GetMapping("avaliadores-editar/{id}.html")
     public ModelAndView areaEditar(@PathVariable Long id){
         ModelAndView mv = new ModelAndView();
-        mv.addObject("avaliador", rep.getOne(id));
+        mv.addObject("avaliador", rep.getClass());
         mv.setViewName("avaliadores-editar");
         return mv;
     }
