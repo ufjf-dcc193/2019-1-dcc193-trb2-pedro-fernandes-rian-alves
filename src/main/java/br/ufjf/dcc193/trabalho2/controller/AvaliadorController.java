@@ -5,6 +5,7 @@ package br.ufjf.dcc193.trabalho2.controller;
 import br.ufjf.dcc193.trabalho2.model.Avaliador;
 import br.ufjf.dcc193.trabalho2.repository.AreaConhecimentoRepository;
 import br.ufjf.dcc193.trabalho2.repository.AvaliadorRepository;
+import br.ufjf.dcc193.trabalho2.service.LoginService;
 
 import javax.validation.Valid;
 
@@ -14,7 +15,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -26,11 +26,41 @@ public class AvaliadorController {
     @Autowired
     private AreaConhecimentoRepository reparea;
 
-    @RequestMapping("login.html")
-    public ModelAndView inicial ()
-    {
+    @Autowired
+    private LoginService loginService;
+
+    @GetMapping(value={"login.html" })
+    public ModelAndView login() {
         ModelAndView mv = new ModelAndView();
+        mv.addObject("avaliador", new Avaliador());
         mv.setViewName("login");
+        return mv;
+    }
+  
+    @PostMapping(value="login.html")
+    public ModelAndView login(@Valid Avaliador avaliador, BindingResult binding){
+            ModelAndView mv = new ModelAndView();
+            if(binding.hasErrors()){
+                mv.setViewName("login");
+                mv.addObject("avaliador", avaliador);
+                return mv;
+            }
+            Avaliador a = rep.findOneByEmailAndCodigoAcesso(avaliador.getEmail(), avaliador.getCodigo());
+            System.err.println(a);
+            if(a != null){
+                loginService.login(a);
+                mv.setViewName("redirect:/avaliador/inicio.html");
+                return mv;
+            }
+            mv.setViewName("redirect:login.html");
+            return mv;
+    }
+
+    @GetMapping(value={"/logout.html" })
+    public ModelAndView logout() {
+        ModelAndView mv = new ModelAndView();
+        loginService.logout();
+        mv.setViewName("redirect:/login.html");
         return mv;
     }
 

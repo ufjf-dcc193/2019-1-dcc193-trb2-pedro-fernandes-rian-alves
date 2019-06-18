@@ -23,25 +23,25 @@
                            <br/>
                            <center><h4>Revisão de Trabalhos</h4></center>
                            <br/>
-                           <form method="post">
-                               <fieldset>
+                           <form th:action="@{login.html}" th:object="${avaliador}" method="POST">
+                            
+                            <fieldset>
    
-                                   <div class="form-group ls-login-user">
-                                       <label for="userLogin">Login</label>
-                                       <input class="form-control ls-login-bg-user input-lg" id="userLogin" type="text" aria-label="Usuário" placeholder="E-mail" name="usuario">
-                                   </div>
-   
-                                   <div class="form-group ls-login-password">
-                                       <label for="userPassword">Código de acesso</label>
-                                       <input class="form-control ls-login-bg-password input-lg" id="userPassword" type="password" aria-label="Senha" placeholder="Senha" name="senha">
-                                   </div>
-                                   <input type="submit" value="Entrar" class="btn btn-primary btn-lg btn-block" name="acessar" >
-   
-                                   <center>Não possui cadastro? </center>
-                                   <center> <a href="novoavaliador.html">Cadastre-se agora</a></center>
-   
-                               </fieldset>
-                           </form>
+                                <div class="form-group ls-login-user">
+                                    <label>E-mail: <input type="text" th:field="*{email}" /></label>
+                                    <strong th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></strong>
+                                </div>
+                                <div class="form-group ls-login-password">
+                                    <label>Código de Acesso: <input type="number" th:field="*{codigo}"/></label>
+                                    <strong th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}"></strong>
+                                 </div>
+
+                                    <input type="submit" class="btn btn-primary btn-lg btn-block"/>
+                                    <center>Não possui cadastro? </center>
+                                    <center> <a href="novoavaliador.html">Cadastre-se agora</a></center>
+                            </fieldset>
+                        </form>
+                       
                        </div>
                       
                    </div>
