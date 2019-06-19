@@ -41,20 +41,19 @@ public class AvaliadorController {
     @PostMapping(value="login.html")
     public ModelAndView login(@Valid Avaliador avaliador, BindingResult binding, HttpSession session){
             ModelAndView mv = new ModelAndView();
+           
             if(binding.hasErrors()){
                 mv.setViewName("login");
                 mv.addObject("avaliador", avaliador);
-                session.setAttribute("id", avaliador.getId());
-                return mv;
+               
             }
             Avaliador a = rep.findOneByEmailAndCodigo(avaliador.getEmail(), avaliador.getCodigo());
             System.err.println(a);
             if(a != null){
                 loginService.login(a);
-                mv.setViewName("redirect:/avaliador/inicio.html");
-                return mv;
-            }
-            mv.setViewName("redirect:login.html");
+                mv.setViewName("redirect:inicio.html"); 
+           }
+
             return mv;
     }
 
@@ -63,6 +62,16 @@ public class AvaliadorController {
         ModelAndView mv = new ModelAndView();
         loginService.logout();
         mv.setViewName("redirect:/login.html");
+        return mv;
+    }
+
+   
+    @GetMapping(value={"/inicio.html"})
+     public ModelAndView inicio(HttpSession session) {
+        ModelAndView mv = new ModelAndView();
+        Avaliador avaliador = loginService.getAvaliador();
+        mv.addObject("avaliador", avaliador);
+        mv.setViewName("inicio");
         return mv;
     }
 
