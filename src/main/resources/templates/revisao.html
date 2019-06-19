@@ -3,7 +3,7 @@
 <a type="button" href="/inicio.html"> Voltar</a>
 <h1>Revisão</h1>
 <span th:object="${trabalho}"></span>
-<h3 ><span th:text="${trabalho.titulo}"></span></h3>
+<h3 ><span th:text="*{titulo}"></span></h3>
 <h5 th:text="*{url}"></h5>
 <h6 th:text="*{descricao}"></h6>
 

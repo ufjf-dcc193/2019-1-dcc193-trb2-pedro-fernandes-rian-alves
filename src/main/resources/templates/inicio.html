@@ -21,38 +21,12 @@
             <td th:text="*{areaConhecimento.area}"></td>
             <td th:text="*{descricao}"></td>
             <td th:text="*{url}"></td>
-<<<<<<< HEAD
+
             <td><a th:href="@{revisao/{id}(id=*{id})}">ABRIR</a></td>
             
         </tr>
         </tbody>
     </table>
-
-    <center><img src="image/.jpg" width="500" height="250"></center><br/><br/>
-    <center><h5><a href="/trabalhos.html">Trabalhos</a></h5></center> <br/><br/>
-    <center><h5><a href="/avaliados.html">Avaliados</a></h5></center> <br/><br/>
-    
-   
-=======
-            <td><a th:href="@{./revisar/{id}(id=*{id})}" th:text="*{id}">ABRIR</a></td>
-
-        </tr>
-        </tbody>
-    </table>
->>>>>>> 226d9ff5a13ed320d9b3a6cf87b4d433639ca426
-
-    <center><img src="image/.jpg" width="500" height="250"></center>
-    <br/><br/>
-    <center><h5><a href="/trabalhos.html">Trabalhos</a></h5></center>
-    <br/><br/>
-    <center><h5><a href="/avaliados.html">Avaliados</a></h5></center>
-    <br/><br/>
-
-
-    <center><h5><a href="https://github.com/ufjf-dcc193/2019-1-dcc196-trb1-Rian18.git">Pedro Fernandes Freitas / Rian
-        das
-        Dores Alves - 201676040</a></h5></center>
-    <br/><br/>
 
 </div>
 <div th:replace="fragments/rodape :: rodape"></div>
