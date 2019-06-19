@@ -1,22 +1,33 @@
 <div th:replace="fragments/cabecalho :: cabecalho"></div>
-
-<form th:action="@{/trabalhos/cadastrar.html}" method="post" th:object="${trabalho}" >
-    <label>Título: <input type="text" th:field="*{titulo}"></label>
-    <strong th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}"></strong>
-    <label>Descrição: <textarea th:field="*{descricao}"></textarea></label>
-    <strong th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}"></strong>
-    <label>Url: <input type="text" th:field="*{url}"></label>
-    <strong th:if="${#fields.hasErrors('url')}" th:errors="*{url}"></strong>
-    <label>Área de Conhecimento</label>
-    <select name="areaConhecimento">
-        <option th:each="area: ${areas}"
-                th:field="${trabalho.areaConhecimento}"
-                th:object="${area}" th:value="*{id}"
-                th:text="*{area}">
-        </option>
-    </select>
-    <input type="submit"/>
-    <input type="reset"/>
-</form>
-
+<div class="container-fluid">
+    <form class="form-group" th:action="@{/trabalhos/cadastrar.html}" method="post" th:object="${trabalho}">
+        <div class="form-group">
+            <label>Título:</label>
+            <input class="form-control" type="text" th:field="*{titulo}">
+            <strong th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}"></strong>
+        </div>
+        <div class="form-group">
+            <label>Descrição: </label>
+                <textarea class="form-control" th:field="*{descricao}"></textarea>
+            <strong th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}"></strong>
+        </div>
+        <div class="form-group">
+            <label>Url: </label>
+            <input class="form-control" type="text" th:field="*{url}">
+            <strong th:if="${#fields.hasErrors('url')}" th:errors="*{url}"></strong>
+        </div>
+        <div class="form-group">
+            <label>Área de Conhecimento</label>
+            <select class="form-control" name="areaConhecimento">
+                <option th:each="area: ${areas}"
+                        th:field="${trabalho.areaConhecimento}"
+                        th:object="${area}" th:value="*{id}"
+                        th:text="*{area}">
+                </option>
+            </select>
+        </div>
+        <input class=" btn btn-success" type="submit"/>
+        <input class=" btn btn-danger" type="reset"/>
+    </form>
+</div>
 <div th:replace="fragments/rodape :: rodape"></div>
