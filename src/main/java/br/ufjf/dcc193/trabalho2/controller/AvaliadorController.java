@@ -4,6 +4,7 @@ import br.ufjf.dcc193.trabalho2.model.Avaliador;
 import br.ufjf.dcc193.trabalho2.model.Trabalho;
 import br.ufjf.dcc193.trabalho2.repository.AreaConhecimentoRepository;
 import br.ufjf.dcc193.trabalho2.repository.AvaliadorRepository;
+import br.ufjf.dcc193.trabalho2.repository.RevisaoRepository;
 import br.ufjf.dcc193.trabalho2.repository.TrabalhoRepository;
 import br.ufjf.dcc193.trabalho2.service.LoginService;
 
@@ -30,6 +31,10 @@ public class AvaliadorController {
 
     @Autowired
     private TrabalhoRepository repTrab;
+
+    @Autowired
+    private RevisaoRepository repRev;
+
     @Autowired
     private LoginService loginService;
 
@@ -76,6 +81,7 @@ public class AvaliadorController {
         java.util.List<Trabalho> trabalhos = repTrab.findAllByAreaConhecimento(avaliador.getAreaConhecimento());
         mv.addObject("avaliador", avaliador);
         mv.addObject("trabalhos", trabalhos);
+        mv.addObject("avaliacoes", repRev.findAll());
         mv.setViewName("inicio");
         return mv;
     }
