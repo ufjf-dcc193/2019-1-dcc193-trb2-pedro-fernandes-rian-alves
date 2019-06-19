@@ -51,9 +51,10 @@ public class TrabalhoController {
     }
 
 
-    @GetMapping("/trabalhos/editar/{id}.html")
+    @GetMapping("/trabalhos/editar/{id}")
     public ModelAndView trabalhoEditar(@PathVariable Long id){
         ModelAndView mv = new ModelAndView();
+        mv.setViewName("trabalhos-editar");
         Optional<Trabalho> trabalho = rep.findById(id);
         mv.addObject("trabalho",trabalho);
         return mv;
@@ -62,12 +63,12 @@ public class TrabalhoController {
     @PostMapping("/trabalhos/editar.html")
     public RedirectView trabalhoEditarPost (Trabalho trabalho){
         rep.save(trabalho);
-        return new RedirectView("/trabalhos.html?alteradp=true");
+        return new RedirectView("/trabalhos/listar.html");
     }
 
-    @DeleteMapping("/trabalhos/deletar/{id}.html")
+    @GetMapping("/trabalhos/deletar/{id}")
     public RedirectView trabalhoDeletar(@PathVariable Long id){
         rep.deleteById(id);
-        return new RedirectView("/trabalhos.html?deletado=true");
+        return new RedirectView("/trabalhos/listar.html");
     }
 }
