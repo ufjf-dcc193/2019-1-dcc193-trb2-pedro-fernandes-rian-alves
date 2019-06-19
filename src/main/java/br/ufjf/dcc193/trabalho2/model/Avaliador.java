@@ -18,6 +18,13 @@ public class Avaliador  {
     @OneToMany
     private List<Revisao> revisoes;
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
      
     public String getNome() {
         return nome;

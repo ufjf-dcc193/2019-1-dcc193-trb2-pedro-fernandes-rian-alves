@@ -7,6 +7,7 @@ import br.ufjf.dcc193.trabalho2.repository.AreaConhecimentoRepository;
 import br.ufjf.dcc193.trabalho2.repository.AvaliadorRepository;
 import br.ufjf.dcc193.trabalho2.service.LoginService;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,14 +39,15 @@ public class AvaliadorController {
     }
   
     @PostMapping(value="login.html")
-    public ModelAndView login(@Valid Avaliador avaliador, BindingResult binding){
+    public ModelAndView login(@Valid Avaliador avaliador, BindingResult binding, HttpSession session){
             ModelAndView mv = new ModelAndView();
             if(binding.hasErrors()){
                 mv.setViewName("login");
                 mv.addObject("avaliador", avaliador);
+                session.setAttribute("id", avaliador.getId());
                 return mv;
             }
-            Avaliador a = rep.findOneByEmailAndCodigoAcesso(avaliador.getEmail(), avaliador.getCodigo());
+            Avaliador a = rep.findOneByEmailAndCodigo(avaliador.getEmail(), avaliador.getCodigo());
             System.err.println(a);
             if(a != null){
                 loginService.login(a);
