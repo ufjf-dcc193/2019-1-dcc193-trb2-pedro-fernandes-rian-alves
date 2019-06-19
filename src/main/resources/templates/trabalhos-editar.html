@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Editar - Trabalho</title>
-</head>
-<body>
+<div th:replace="fragments/cabecalho :: cabecalho"></div>
+
 <form th:action="@{/trabalhos/editar.html}" method="post" th:object="${trabalho}" >
     <label>Título: <input type="text" th:field="*{titulo}"></label>
     <strong th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}"></strong>
@@ -14,9 +8,16 @@
     <label>Url: <input type="text" th:field="*{url}"></label>
     <strong th:if="${#fields.hasErrors('url')}" th:errors="*{url}"></strong>
     <input type="hidden" th:field="*{id}">
+    <label>Área de Conhecimento</label>
+    <select>
+        <option th:each="conhecimento: ${areas}"
+                th:object="${conhecimento}" th:value="*{id}"
+                th:field="${trabalho.areaConhecimento}"
+                th:text="*{area}">
+        </option>
+    </select>
     <input type="submit"/>
     <input type="reset"/>
 </form>
 
-</body>
-</html>
+<div th:replace="fragments/rodape :: rodape"></div>

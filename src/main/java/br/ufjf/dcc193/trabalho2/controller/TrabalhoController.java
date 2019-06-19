@@ -1,6 +1,7 @@
 package br.ufjf.dcc193.trabalho2.controller;
 
 import br.ufjf.dcc193.trabalho2.model.Trabalho;
+import br.ufjf.dcc193.trabalho2.repository.AreaConhecimentoRepository;
 import br.ufjf.dcc193.trabalho2.repository.TrabalhoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,9 @@ public class TrabalhoController {
     @Autowired
     private TrabalhoRepository rep;
 
+    @Autowired
+    private AreaConhecimentoRepository areaRep;
+
     @GetMapping("/trabalhos/listar.html")
     public ModelAndView trabalhos(){
         ModelAndView mv = new ModelAndView();
@@ -35,6 +39,7 @@ public class TrabalhoController {
     public ModelAndView trabalhoCadasatrar() {
         Trabalho trabalho = new Trabalho();
         ModelAndView mv = new ModelAndView();
+        mv.addObject("areas", areaRep.findAll());
         mv.setViewName("trabalhos-cadastrar");
         mv.addObject("trabalho", trabalho);
         return mv;
@@ -56,6 +61,7 @@ public class TrabalhoController {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("trabalhos-editar");
         Optional<Trabalho> trabalho = rep.findById(id);
+        mv.addObject("areas", areaRep.findAll());
         mv.addObject("trabalho",trabalho);
         return mv;
     }
