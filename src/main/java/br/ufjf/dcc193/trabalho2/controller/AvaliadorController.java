@@ -7,6 +7,8 @@ import br.ufjf.dcc193.trabalho2.repository.AvaliadorRepository;
 import br.ufjf.dcc193.trabalho2.repository.TrabalhoRepository;
 import br.ufjf.dcc193.trabalho2.service.LoginService;
 
+import java.util.Optional;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -17,9 +19,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
-
-import antlr.collections.List;
-
 
 @Controller
 public class AvaliadorController {
@@ -41,27 +40,27 @@ public class AvaliadorController {
         mv.setViewName("login");
         return mv;
     }
-  
-    @PostMapping(value="login.html")
-    public ModelAndView login(@Valid Avaliador avaliador, BindingResult binding, HttpSession session){
-            ModelAndView mv = new ModelAndView();
-           
-            if(binding.hasErrors()){
-                mv.setViewName("login");
-                mv.addObject("avaliador", avaliador);
-               
-            }
-            Avaliador a = rep.findOneByEmailAndCodigo(avaliador.getEmail(), avaliador.getCodigo());
-            System.err.println(a);
-            if(a != null){
-                loginService.login(a);
-                mv.setViewName("redirect:inicio.html"); 
-           }
 
-            return mv;
+    @PostMapping(value = "login.html")
+    public ModelAndView login(@Valid Avaliador avaliador, BindingResult binding, HttpSession session) {
+        ModelAndView mv = new ModelAndView();
+
+        if (binding.hasErrors()) {
+            mv.setViewName("login");
+            mv.addObject("avaliador", avaliador);
+
+        }
+        Avaliador a = rep.findOneByEmailAndCodigo(avaliador.getEmail(), avaliador.getCodigo());
+        System.err.println(a);
+        if (a != null) {
+            loginService.login(a);
+            mv.setViewName("redirect:inicio.html");
+        }
+
+        return mv;
     }
 
-    @GetMapping(value={"/logout.html" })
+    @GetMapping(value = { "/logout.html" })
     public ModelAndView logout() {
         ModelAndView mv = new ModelAndView();
         loginService.logout();
@@ -69,9 +68,8 @@ public class AvaliadorController {
         return mv;
     }
 
-   
-    @GetMapping(value={"/inicio.html"})
-     public ModelAndView inicio(HttpSession session) {
+    @GetMapping(value = { "/inicio.html" })
+    public ModelAndView inicio(HttpSession session) {
         ModelAndView mv = new ModelAndView();
         Avaliador avaliador = loginService.getAvaliador();
         java.util.List<Trabalho> trabalhos = repTrab.findAllByAreaConhecimento(avaliador.getAreaConhecimento());
@@ -80,6 +78,8 @@ public class AvaliadorController {
         mv.setViewName("inicio");
         return mv;
     }
+
+    
 
     @GetMapping("avaliadores-lista.html")
     public ModelAndView avaliadores(){
