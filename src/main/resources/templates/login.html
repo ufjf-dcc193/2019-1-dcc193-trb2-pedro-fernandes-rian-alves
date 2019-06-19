@@ -19,27 +19,30 @@
             <div class="well bg-white box-login">
 
 
-                <img src="icones/dcc.png" class="rounded mx-auto d-block" width="250" height="166" alt="Imagem">
+                <img src="/src/main/resources/images/UFJF-600-dpi-1024x740.jpg" class="rounded mx-auto d-block" width="250" height="166" alt="Imagem">
                 <br/>
                 <center><h4>Revisão de Trabalhos</h4></center>
                 <br/>
                 <form th:action="@{login.html}" th:object="${avaliador}" method="POST">
 
-                    <fieldset>
+                   
 
                         <div class="form-group ls-login-user">
-                            <label>E-mail: <input type="text" th:field="*{email}"/></label>
+                           <center> <label>E-mail: <input type="text" th:field="*{email}"/></label>
                             <strong th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></strong>
+                            </center>
                         </div>
                         <div class="form-group ls-login-password">
+                            <center>
                             <label>Código de Acesso: <input type="number" th:field="*{codigo}"/></label>
                             <strong th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}"></strong>
+                            </center>
                         </div>
 
                         <input type="submit" class="btn btn-primary btn-lg btn-block"/>
                         <center>Não possui cadastro?</center>
                         <center><a href="novoavaliador.html">Cadastre-se agora</a></center>
-                    </fieldset>
+                    
                 </form>
 
             </div>
@@ -47,8 +50,10 @@
         </div>
     </div>
     <div class="col"></div>
+<br>
 
 </div>
 
 </div>
+<br>
 <div th:replace="fragments/rodape :: rodape"></div>

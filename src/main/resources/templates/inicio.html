@@ -3,15 +3,17 @@
 <div class="container-fluid">
     <center><h1>Avaliação de Trabalhos</h1></center>
     <br/><br/>
-    <h2>Seja bem vindo,<span th:text="${avaliador.nome}"></span></h2>
+    <h2>Seja bem vindo, <span th:text="${avaliador.nome}"></span></h2>
+    <h4> Escolha entre os trabalhos da sua Área para iniciar uma revisão</h4>
+    <br>
 
-    <table>
-        <thead>
+    <table class="table">
+        <thead class="thead-dark">
         <tr>
-            <th>Título</th>
-            <th>Área de Conhecimento</th>
-            <th>Descrição</th>
-            <th>Url</th>
+            <th scope="col">Título</th>
+            <th scope="col" >Área de Conhecimento</th>
+            <th scope="col">Url</th>
+            <th scope="col"></th>
 
         </tr>
         </thead>
@@ -19,10 +21,8 @@
         <tr th:each="trabalho: ${trabalhos}" th:object="${trabalho}">
             <td th:text="*{titulo}"></td>
             <td th:text="*{areaConhecimento.area}"></td>
-            <td th:text="*{descricao}"></td>
             <td th:text="*{url}"></td>
-
-            <td><a th:href="@{revisao/{id}(id=*{id})}">ABRIR</a></td>
+            <td><center><a th:href="@{revisao/{id}(id=*{id})}" type="button" class="btn btn-primary">ABRIR TRABALHO</a></center></td>
             
         </tr>
         </tbody>
@@ -40,5 +40,8 @@
     </table>
 
 
+    <br>
+
 </div>
+
 <div th:replace="fragments/rodape :: rodape"></div>
