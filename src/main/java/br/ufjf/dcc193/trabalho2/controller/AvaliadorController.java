@@ -71,6 +71,7 @@ public class AvaliadorController {
         ModelAndView mv = new ModelAndView();
         Avaliador avaliador = loginService.getAvaliador();
         mv.addObject("avaliador", avaliador);
+        mv.addObject("areaAvaliador",avaliador.getAreaConhecimento());
         mv.setViewName("inicio");
         return mv;
     }

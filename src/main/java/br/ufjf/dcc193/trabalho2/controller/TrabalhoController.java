@@ -1,5 +1,6 @@
 package br.ufjf.dcc193.trabalho2.controller;
 
+import br.ufjf.dcc193.trabalho2.model.AreaConhecimento;
 import br.ufjf.dcc193.trabalho2.model.Trabalho;
 import br.ufjf.dcc193.trabalho2.repository.AreaConhecimentoRepository;
 import br.ufjf.dcc193.trabalho2.repository.TrabalhoRepository;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 import java.util.List;
@@ -29,6 +31,16 @@ public class TrabalhoController {
         mv.setViewName("trabalhos-listar");
         mv.addObject("trabalhos",trabalhos);
         return mv;
+    }
+    @GetMapping(value={"/listar.html"}, params = {"areaAvaliador"})
+    public ModelAndView listarArea(@RequestParam AreaConhecimento area) {
+        ModelAndView mv = new ModelAndView();
+        List<Trabalho> trabalhos = rep.findAllByAreaConhecimento(area);
+        mv.addObject("trabalhos", trabalhos);
+        mv.addObject("area", area);
+        mv.setViewName("trabalhos-area");
+        return mv;
+
     }
 
     @GetMapping("trabalhos/cadastrar.html")
