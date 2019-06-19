@@ -1,13 +1,14 @@
 <div th:replace="fragments/cabecalho :: cabecalho"></div>
 
-<a type="button" href="/trabalhos/cadastrar.html"> Novo Trabalho</a>
-<table>
+<a type="button" href="/trabalhos/cadastrar.html" class="btn btn-success"> Novo Trabalho</a>
+<table class="table table-striped">
     <thead>
     <tr>
         <th>Título</th>
         <th>Área de Conhecimento</th>
         <th>Descrição</th>
         <th>Url</th>
+        <th colspan="2">Ações</th>
     </tr>
     </thead>
     <tbody>
@@ -16,8 +17,8 @@
         <td th:text="*{areaConhecimento.area}"></td>
         <td th:text="*{descricao}"></td>
         <td th:text="*{url}"></td>
-        <td><a th:href="@{./editar/{id}(id=*{id})}" th:text="*{id}">Editar</a></td>
-        <td><a th:href="@{./deletar/{id}(id=*{id})}">X</a></td>
+        <td><a th:href="@{./editar/{id}(id=*{id})}" class="btn btn-secondary">Editar</a></td>
+        <td><a th:href="@{./deletar/{id}(id=*{id})}" class="btn btn-danger">Excluir</a></td>
     </tr>
     </tbody>
 </table>
