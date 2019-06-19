@@ -11,6 +11,10 @@
 </head>
 
 <div class="container-fluid">
+    <center><h3>Cadastre-se como avaliador para utilizar o sistema</h3></center><br><br>
+    <div class="row">
+        <div class = "col"></div>
+        <div class="col">
     <form th:action="@{criar.html}" method="post" th:object="${avaliador}">
         <label>Nome:</label>
         <input type="text" th:field="*{nome}" class="form-control">
@@ -36,7 +40,11 @@
         <input class="btn btn-success" type="submit"/>
         <input class="btn btn-danger" type="reset"/>
     </form>
-
+    </div>
+    <div class="col"></div>
+    </div>
+    <br/>
+    <br/>
     <br/>
     <br/>
 
