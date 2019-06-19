@@ -30,7 +30,7 @@ public class AvaliadorController {
     @Autowired
     private LoginService loginService;
 
-    @GetMapping(value={"login.html" })
+    @GetMapping("/")
     public ModelAndView login() {
         ModelAndView mv = new ModelAndView();
         mv.addObject("avaliador", new Avaliador());
