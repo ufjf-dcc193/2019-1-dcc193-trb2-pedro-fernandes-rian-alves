@@ -1,6 +1,7 @@
 package br.ufjf.dcc193.trabalho2.controller;
 
 import br.ufjf.dcc193.trabalho2.model.Avaliador;
+import br.ufjf.dcc193.trabalho2.model.Revisao;
 import br.ufjf.dcc193.trabalho2.model.Trabalho;
 import br.ufjf.dcc193.trabalho2.repository.AreaConhecimentoRepository;
 import br.ufjf.dcc193.trabalho2.repository.AvaliadorRepository;
@@ -82,6 +83,8 @@ public class AvaliadorController {
         mv.addObject("avaliador", avaliador);
         mv.addObject("trabalhos", trabalhos);
         mv.addObject("avaliacoes", repRev.findAll());
+        java.util.List<Revisao> revisoes = repRev.findAll();
+        mv.addObject("revisoes", revisoes);
         mv.setViewName("inicio");
         return mv;
     }
