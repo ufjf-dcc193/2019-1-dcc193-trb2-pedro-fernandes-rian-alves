@@ -22,17 +22,11 @@
         <div class="input-group">
             <select class="form-control" id="areaConhecimento">
                  <option th:each="areaConhecimento : ${areas}"
-                         th:value="${areaConhecimento.id}"
+                         th:value="${areaConhecimento}"
                          th:text="${areaConhecimento.area}" >        
-            </select> <span class="input-group-btn">
-                <button class="btn btn-primary" type="button" id="add" onclick="MoveListBoxItem('areaConhecimento','itemArea')">Adicionar</button>
-                <button class="btn btn-warning" type="button" id="remove" onclick="MoveListBoxItem('itemArea','areaConhecimento')">Remover</button>
-            </span>
-        </div><br/>
-        <label>Áreas de Conhecimento</label><br/>
-        <select class="form-control" multiple="multiple" name="itemArea" id="itemArea">
-        </select>
+            </select> 
         <br/>
+        </div>
         
         <input type="submit" />
         <input type="reset" />

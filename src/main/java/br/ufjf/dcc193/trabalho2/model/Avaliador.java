@@ -13,7 +13,7 @@ public class Avaliador  {
     
     private String codigo;
     @OneToMany
-    private List<AreaConhecimento> areaConhecimento;
+    AreaConhecimento areaConhecimento;
 
     @OneToMany
     private List<Revisao> revisoes;
@@ -35,7 +35,7 @@ public class Avaliador  {
         return codigo;
     }
 
-    public List<AreaConhecimento> getAreaConhecimento() {
+    public AreaConhecimento getAreaConhecimento() {
         return areaConhecimento;
     }
 
@@ -55,7 +55,7 @@ public class Avaliador  {
         this.codigo = codigo;
     }
 
-    public void setAreaConhecimento(List<AreaConhecimento> areaConhecimento) {
+    public void setAreaConhecimento(AreaConhecimento areaConhecimento) {
         this.areaConhecimento = areaConhecimento;
     }
 
