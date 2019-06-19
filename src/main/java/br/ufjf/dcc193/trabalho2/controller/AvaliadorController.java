@@ -42,14 +42,14 @@ public class AvaliadorController {
         return mv;
     }
   
-    @PostMapping(value="login.html")
+    @PostMapping("login.html")
     public ModelAndView login(@Valid Avaliador avaliador, BindingResult binding, HttpSession session){
             ModelAndView mv = new ModelAndView();
            
             if(binding.hasErrors()){
                 mv.setViewName("login");
                 mv.addObject("avaliador", avaliador);
-               
+
             }
             Avaliador a = rep.findOneByEmailAndCodigo(avaliador.getEmail(), avaliador.getCodigo());
             System.err.println(a);
@@ -117,7 +117,7 @@ public class AvaliadorController {
             return mv;
         }
         rep.save(avaliador);
-        mv.setViewName("redirect:login.html");
+        mv.setViewName("redirect:/");
        return mv;
        
     }

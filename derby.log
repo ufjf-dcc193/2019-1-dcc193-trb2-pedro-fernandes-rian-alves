@@ -1,13 +1,13 @@
 ----------------------------------------------------------------
-Wed Jun 19 17:32:36 BRT 2019:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-016b-7170-efa2-00000add93f8 
-on database directory C:\Users\Rian Alves\Desktop\UFJF\2019.1\Lab WEB 2\2019-1-dcc193-trb2-pedro-fernandes-rian-alves\target\trabalho02_1.db with class loader sun.misc.Launcher$AppClassLoader@764c12b6 
-Loaded from file:/C:/Users/Rian%20Alves/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
+Wed Jun 19 18:22:12 BRT 2019:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-016b-719e-5cc1-00000974df58 
+on database directory /home/pedrofreitas/IdeaProjects/2019-1-dcc193-trb2-pedro-fernandes-rian-alves/target/trabalho02_1.db with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 
+Loaded from file:/home/pedrofreitas/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
 java.vendor=Oracle Corporation
-java.runtime.version=1.8.0_211-b12
-user.dir=C:\Users\Rian Alves\Desktop\UFJF\2019.1\Lab WEB 2\2019-1-dcc193-trb2-pedro-fernandes-rian-alves
-os.name=Windows 10
+java.runtime.version=1.8.0_212-8u212-b03-0ubuntu1.18.04.1-b03
+user.dir=/home/pedrofreitas/IdeaProjects/2019-1-dcc193-trb2-pedro-fernandes-rian-alves
+os.name=Linux
 os.arch=amd64
-os.version=10.0
+os.version=4.18.0-21-generic
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''

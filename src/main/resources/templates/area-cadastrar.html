@@ -1,19 +1,17 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Cadastro- Área de Conhecimento</title>
-        
-</head>
-<body>
-    <form th:action="@{criarArea.html}" method="post" th:object="${area}">
-        <label>Área: <input type="text" th:field="*{area}"></label>
+<div th:replace="fragments/cabecalho :: cabecalho"></div>
+
+<div class="container-fluid">
+
+    <form th:action="@{criarArea.html}" class="form-group" method="post" th:object="${area}">
+        <label>Área: </label>
+        <input type="text" class="form-control" th:field="*{area}">
         <strong th:if="${#fields.hasErrors('area')}" th:errors="*{area}"></strong>
-        <label>Descrição: <input type="descricao" th:field="*{descricao}"></label>
-        <strong th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}"></strong>   
-        <input type="submit" />
-        <input type="reset" />
+        <label>Descrição:</label>
+        <input type="descricao" class="form-control" th:field="*{descricao}">
+        <strong th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}"></strong>
+        <br/>
+        <input class="btn btn-success" type="submit"/>
+        <input class="btn btn-danger" type="reset"/>
     </form>
-</body>
-</html>
+</div>
+<div th:replace="fragments/rodape :: rodape"></div>

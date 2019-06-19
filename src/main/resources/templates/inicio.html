@@ -1,14 +1,8 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Página Inicial</title>
-        
-</head>
-<body>
-    <br/>
-    <center><h1>Avaliação de Trabalhos</h1></center><br/><br/>
+<div th:replace="fragments/cabecalho :: cabecalho"></div>
+
+<div class="container-fluid">
+    <center><h1>Avaliação de Trabalhos</h1></center>
+    <br/><br/>
     <h2>Seja bem vindo,<span th:text="${avaliador.nome}"></span></h2>
 
     <table>
@@ -27,18 +21,23 @@
             <td th:text="*{descricao}"></td>
             <td th:text="*{url}"></td>
             <td><a th:href="@{./revisar/{id}(id=*{id})}" th:text="*{id}">ABRIR</a></td>
-            
+
         </tr>
         </tbody>
     </table>
-    
-    <center><img src="image/.jpg" width="500" height="250"></center><br/><br/>
-    <center><h5><a href="/trabalhos.html">Trabalhos</a></h5></center> <br/><br/>
-    <center><h5><a href="/avaliados.html">Avaliados</a></h5></center> <br/><br/>
-    
-   
 
-    <center><h5><a href="https://github.com/ufjf-dcc193/2019-1-dcc196-trb1-Rian18.git">Pedro Fernandes Freitas / Rian das Dores Alves - 201676040</a></h5></center> <br/><br/>
-    
-</body>
-</html>
+    <center><img src="image/.jpg" width="500" height="250"></center>
+    <br/><br/>
+    <center><h5><a href="/trabalhos.html">Trabalhos</a></h5></center>
+    <br/><br/>
+    <center><h5><a href="/avaliados.html">Avaliados</a></h5></center>
+    <br/><br/>
+
+
+    <center><h5><a href="https://github.com/ufjf-dcc193/2019-1-dcc196-trb1-Rian18.git">Pedro Fernandes Freitas / Rian
+        das
+        Dores Alves - 201676040</a></h5></center>
+    <br/><br/>
+
+</div>
+<div th:replace="fragments/rodape :: rodape"></div>
