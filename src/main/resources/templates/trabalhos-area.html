@@ -1,0 +1,25 @@
+<div th:replace="fragments/cabecalho :: cabecalho"></div>
+
+<a type="button" href="/trabalhos/cadastrar.html"> Novo Trabalho</a>
+<table>
+    <thead>
+    <tr>
+        <th>Título</th>
+        <th>Área de Conhecimento</th>
+        <th>Descrição</th>
+        <th>Url</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="trabalho: ${trabalhos}" th:object="${trabalho}">
+        <td th:text="*{titulo}"></td>
+        <td th:text="*{areaConhecimento.area}"></td>
+        <td th:text="*{descricao}"></td>
+        <td th:text="*{url}"></td>
+        <td><a th:href="@{./revisar/{id}(id=*{id})}" th:text="*{id}">ABRIR</a></td>
+        
+    </tr>
+    </tbody>
+</table>
+
+<div th:replace="fragments/rodape :: rodape"></div>
