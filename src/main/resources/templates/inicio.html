@@ -10,6 +10,28 @@
     <br/>
     <center><h1>Avaliação de Trabalhos</h1></center><br/><br/>
     <h2>Seja bem vindo,<span th:text="${avaliador.nome}"></span></h2>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Título</th>
+            <th>Área de Conhecimento</th>
+            <th>Descrição</th>
+            <th>Url</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="trabalho: ${trabalhos}" th:object="${trabalho}">
+            <td th:text="*{titulo}"></td>
+            <td th:text="*{areaConhecimento.area}"></td>
+            <td th:text="*{descricao}"></td>
+            <td th:text="*{url}"></td>
+            <td><a th:href="@{./revisar/{id}(id=*{id})}" th:text="*{id}">ABRIR</a></td>
+            
+        </tr>
+        </tbody>
+    </table>
+    
     <center><img src="image/.jpg" width="500" height="250"></center><br/><br/>
     <center><h5><a href="/trabalhos.html">Trabalhos</a></h5></center> <br/><br/>
     <center><h5><a href="/avaliados.html">Avaliados</a></h5></center> <br/><br/>

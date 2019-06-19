@@ -18,15 +18,17 @@
         <label>Código de Acesso: <input type="text" th:field="*{codigo}"></label><br/>
         <strong th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}"></strong> <br/> 
        
-        <label>Informe a Área de Conhecimento e adicione:</label><br/>
-        <div class="input-group">
-            <select class="form-control" id="areaConhecimento">
-                 <option th:each="areaConhecimento : ${areas}"
-                         th:value="${areaConhecimento}"
-                         th:text="${areaConhecimento.area}" >        
-            </select> 
+        <label>Informe a Área de Conhecimento: </label><br/>
+                
+            <select name="areaConhecimento">
+                <option th:each="area: ${areas}"
+                        th:field="${avaliador.areaConhecimento}"
+                        th:object="${area}" th:value="*{id}"
+                        th:text="*{area}">
+                </option>
+            </select>
         <br/>
-        </div>
+       
         
         <input type="submit" />
         <input type="reset" />

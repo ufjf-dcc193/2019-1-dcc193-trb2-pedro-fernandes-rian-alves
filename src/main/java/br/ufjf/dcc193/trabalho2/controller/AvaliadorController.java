@@ -1,10 +1,10 @@
 package br.ufjf.dcc193.trabalho2.controller;
 
-
-
 import br.ufjf.dcc193.trabalho2.model.Avaliador;
+import br.ufjf.dcc193.trabalho2.model.Trabalho;
 import br.ufjf.dcc193.trabalho2.repository.AreaConhecimentoRepository;
 import br.ufjf.dcc193.trabalho2.repository.AvaliadorRepository;
+import br.ufjf.dcc193.trabalho2.repository.TrabalhoRepository;
 import br.ufjf.dcc193.trabalho2.service.LoginService;
 
 import javax.servlet.http.HttpSession;
@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import antlr.collections.List;
+
 
 @Controller
 public class AvaliadorController {
@@ -27,6 +29,8 @@ public class AvaliadorController {
     @Autowired
     private AreaConhecimentoRepository reparea;
 
+    @Autowired
+    private TrabalhoRepository repTrab;
     @Autowired
     private LoginService loginService;
 
@@ -70,8 +74,9 @@ public class AvaliadorController {
      public ModelAndView inicio(HttpSession session) {
         ModelAndView mv = new ModelAndView();
         Avaliador avaliador = loginService.getAvaliador();
+        java.util.List<Trabalho> trabalhos = repTrab.findAllByAreaConhecimento(avaliador.getAreaConhecimento());
         mv.addObject("avaliador", avaliador);
-        mv.addObject("areaAvaliador",avaliador.getAreaConhecimento());
+        mv.addObject("trabalhos", trabalhos);
         mv.setViewName("inicio");
         return mv;
     }

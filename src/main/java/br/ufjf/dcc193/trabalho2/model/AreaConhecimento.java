@@ -12,10 +12,12 @@ public class AreaConhecimento {
     private String descricao;
 
     @OneToMany
-    private List<Trabalho> trabalhos;
+    private List<Avaliador> avaliadores;
 
     @OneToMany
-    private List<Avaliador> avaliadores;
+    private List<Trabalho> trabalhos;
+
+  
 
     public Long getId() {
         return id;

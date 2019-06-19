@@ -12,7 +12,8 @@ public class Avaliador  {
     private String nome;
     
     private String codigo;
-    @OneToMany
+ 
+    @OneToOne
     AreaConhecimento areaConhecimento;
 
     @OneToMany
