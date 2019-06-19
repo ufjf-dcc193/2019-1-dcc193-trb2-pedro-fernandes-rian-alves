@@ -2,10 +2,9 @@
 
 <a type="button" href="/inicio.html"> Voltar</a>
 <h1>Revisão</h1>
-<span th:object="${trabalho}"></span>
-<h5 th:text="*{url}"></h5>
-<h6 th:text="*{descricao}"></h6>
-<h3><span th:text="*{titulo}"></span></h3>
+<h5 th:text="*{trabalho.url}"></h5>
+<h6 th:text="*{trabalho.descricao}"></h6>
+<h3><span th:text="*{trabalho.titulo}"></span></h3>
 
 <div class="container-fluid">
     <form th:action="@{/revisao.html}" class="form-group" method="post" th:object="${revisao}">

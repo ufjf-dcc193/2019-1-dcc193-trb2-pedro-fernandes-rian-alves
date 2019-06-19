@@ -38,7 +38,7 @@ public class RevisaoController {
         Revisao revisao = new Revisao();
         mv.addObject("revisao", revisao);
        mv.addObject("avaliador", avaliador);
-       mv.addObject("trabalho", trabalho);
+       mv.addObject("trabalho", trabalho.get());
        mv.addObject("status", Status.getValues());
        mv.setViewName("revisao");
        return mv;
