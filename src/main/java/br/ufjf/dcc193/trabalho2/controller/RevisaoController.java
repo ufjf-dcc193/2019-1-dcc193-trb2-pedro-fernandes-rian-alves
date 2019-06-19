@@ -49,4 +49,18 @@ public class RevisaoController {
        rep.save(revisao);
        return new ModelAndView("redirect:inicio.html");
    }
+
+   @PostMapping("/revisao/pular.html")
+    public ModelAndView pularPost(Revisao revisao){
+        revisao.setStatus(Status.IMPEDIDO);
+        rep.save(revisao);
+        return new ModelAndView("redirect:inicio.html");
+   }
+
+   @PostMapping("revisao/revisar-depois.html")
+   public ModelAndView revisarDepoisPost(Revisao revisao){
+       revisao.setStatus(Status.AFAZER);
+       rep.save(revisao);
+       return new ModelAndView("redirect:inicio.html");
+   }
 }
