@@ -27,6 +27,18 @@
         </tr>
         </tbody>
     </table>
+    <br/>
+    <br/>
+
+    <table>
+        <tr th:each="avaliacao: ${avaliacoes}" th:object="${avaliacao}">
+            <td th:text="*{nota}"></td>
+            <td th:text="*{status}"></td>
+            <td th:text="*{descricao}"></td>
+            <td th:text="*{avaliador.nome}"></td>
+        </tr>
+    </table>
+
 
 </div>
 <div th:replace="fragments/rodape :: rodape"></div>

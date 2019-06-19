@@ -15,6 +15,10 @@ public enum Status {
         this.descricao = descricao;
     }
 
+    public static Status[] getValues() {
+        return Status.values();
+    }
+
     public int getCodigo() {
         return codigo;
     }

@@ -3,10 +3,35 @@
 <a type="button" href="/inicio.html"> Voltar</a>
 <h1>Revisão</h1>
 <span th:object="${trabalho}"></span>
-<h3 ><span th:text="*{titulo}"></span></h3>
 <h5 th:text="*{url}"></h5>
 <h6 th:text="*{descricao}"></h6>
+<h3><span th:text="*{titulo}"></span></h3>
 
-    
+<div class="container-fluid">
+    <form th:action="@{/revisao.html}" class="form-group" method="post" th:object="${revisao}">
+        <div class="form-group">
+            <label> Nota:</label>
+            <input type="number" min="0" max="10" class="form-control" th:field="*{nota}">
+        </div>
+        <div class="form-group">
+            <label> Descrição:</label>
+            <input type="text" class="form-control" th:field="*{descricao}">
+        </div>
+        <div class="form-group">
+            <label> Status:</label>
+            <select class="form-control" name="status">
+                <option th:each="status: ${status}"
+                        th:field="${revisao.status}"
+                        th:object="${status}"
+                        th:text="*{descricao}"
+                        th:value="${status}"
+                ></option>
+            </select>
+        </div>
+        <input type="hidden" th:field="${revisao.avaliador}">
+        <input class="btn btn-success" type="submit" value="Revisar Agora"/>
+    </form>
+</div>
+
 
 <div th:replace="fragments/rodape :: rodape"></div>
